@@ -1,0 +1,27 @@
+<%@comments.each do |c|%>
+	<div class="comment_content">
+		<p>
+			<strong>
+				<%= c.name %>
+					
+			</strong>
+		</p>
+		<p>
+			<%= c.body %>
+			
+		</p>
+			<p>By <%= c.user_id %></p> 
+		<p>
+			<%= time_ago_in_words(c.created_at) %> Ago
+		</p>
+
+	</div>
+<% end %>
+<% if user_signed_in? %>
+<p>
+<%= link_to 'Delete', [comment.post, comment],
+					method: :delete,
+					class:"button",
+					data: { confirm: 'Are You Sure?'} %>
+</p>
+<% end%>
